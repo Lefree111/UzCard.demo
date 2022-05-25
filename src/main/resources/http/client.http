@@ -1,0 +1,60 @@
+### bu yangi client yaratish uchun ishlatiladi
+POST http://localhost:8084/client/create
+Content-Type: application/json
+
+{
+  "name": "Shamshotbek",
+  "surname": "Komiljonov",
+  "middleName": "Sodiqjon o'g'li",
+  "phone": "+9989351212202",
+  "profileName": "Apelsin"
+}
+
+<> 2022-05-25T191554.200.json
+
+### bu yaratilgan clientni tel raqami bilan topib uni malumotlarini yangilaydi
+PUT http://localhost:8084/client/update/+9989351212202
+Content-Type: application/json
+
+{
+  "name": "Soyibjon",
+  "surname": "Islomov",
+  "middleName": "Davlatbek o'g'li",
+  "profileName": "Click"
+}
+
+<> 2022-05-25T191726.200.json
+
+### bu clientni statusini active qilish uchun ishlatiladi birinchi yaratilganda NO_ACTIVE bo'ladi
+PUT http://localhost:8084/client/updateStatus/+9989351212202
+Content-Type: application/json
+
+<> 2022-05-25T191933.200.json
+
+### bu narsa telefon raqamin yangilash uchun ishlatiladi
+PUT http://localhost:8084/client/updatePhone/+998908798549
+Content-Type: application/json
+
+{
+  "phone": "+998909119180"
+}
+
+<> 2022-05-25T192433.200.json
+
+### bu barcah clientni yaratilgan vaqti bilan pagination qilib beradi limit 5 ta
+GET http://localhost:8084/client/pagination
+Content-Type: application/json
+
+<> 2022-05-25T192412.200.json
+
+### bu tel raqamga kimga tegishli ekanligini ko'rib beradi
+GET http://localhost:8084/client/getById/+998909119180
+Content-Type: application/json
+
+<> 2022-05-25T192528.200.json
+
+### bu clientlarni profileName si bo'yicha hammasini olib beradi
+GET http://localhost:8084/client/AllClient_viz_profileName/Humans
+Content-Type: application/json
+
+<> 2022-05-25T193015.200.json
