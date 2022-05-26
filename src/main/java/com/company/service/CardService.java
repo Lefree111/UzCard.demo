@@ -3,7 +3,6 @@ package com.company.service;
 import com.company.CardStatus;
 import com.company.dto.CardDTO;
 import com.company.dto.ClientCardDTO;
-import com.company.dto.ClientDTO;
 import com.company.entity.CardEntity;
 import com.company.entity.ClientEntity;
 import com.company.exp.CardAlreadyExistsExsecption;
@@ -101,6 +100,15 @@ public class CardService {
         if (entity.isEmpty()){throw new NumberNotFoundExseption("karta raqami topilmadi");}
         CardEntity cardEntity = entity.get();
         return toDTO(cardEntity);
+    }
+
+    public Long getCardBalanceByNumber(String number){
+        Optional<CardEntity> optional = cardRepository.findByNumber(number);
+        if (optional.isEmpty()){
+            throw new NumberNotFoundExseption("karta topilmadi");
+        }
+        CardEntity entity = optional.get();
+        return entity.getBalance();
     }
 
 

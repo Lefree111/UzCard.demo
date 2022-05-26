@@ -1,0 +1,64 @@
+
+###
+POST http://localhost:8084/card/create
+Content-Type: application/json
+
+{
+  "name": "UzCard"
+}
+
+<> 2022-05-26T111038.200.json
+<> 2022-05-26T100738.200.json
+<> 2022-05-26T100631.500.json
+<> 2022-05-26T100417.500.json
+
+
+###
+POST http://localhost:8084/card/card_vs_client_ulanish
+Content-Type: application/json
+
+{
+  "phone": "+998330041155",
+  "number": "8600-5340-4927-6610"
+}
+
+<> 2022-05-26T111336.200.json
+<> 2022-05-26T103100.200.json
+<> 2022-05-26T102821.200.json
+<> 2022-05-26T102514.400.json
+
+###
+PUT http://localhost:8084/card/updatestatusCard/8600-5340-4927-6610
+Content-Type: application/json
+
+<> 2022-05-26T111149.200.json
+<> 2022-05-26T105430.200.json
+
+###
+GET http://localhost:8084/card/getCardListByPhone/+998330041155
+Content-Type: application/json
+
+<> 2022-05-26T111344.200.json
+<> 2022-05-26T111021.200.json
+
+###
+GET http://localhost:8084/card/getCardListByClientId/4028097b80fb5d250180fb5d5c2a0000
+Content-Type: application/json
+
+<> 2022-05-26T112506.200.json
+<> 2022-05-26T112314.404.json
+
+###
+GET http://localhost:8084/card/getCardByNumber/8600-5340-4927-6610
+Content-Type: application/json
+
+<> 2022-05-26T113413.200.json
+<> 2022-05-26T113302.500.json
+
+###
+GET http://localhost:8084/card/getCardBalanceByNumber/8600-5340-4927-6610
+Content-Type: application/json
+
+<> 2022-05-26T114601.200.json
+<> 2022-05-26T114533.200.json
+<> 2022-05-26T114509.200.json

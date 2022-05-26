@@ -48,6 +48,11 @@ public class CardController {
         return ResponseEntity.ok(cardService.getCardByNumber(number));
     }
 
+    @GetMapping("/getCardBalanceByNumber/{number}")
+    public ResponseEntity<?> getCardBalanceByNumber(@PathVariable("number") String number){
+        return ResponseEntity.ok(cardService.getCardBalanceByNumber(number));
+    }
+
 
 
 }

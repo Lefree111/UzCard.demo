@@ -19,9 +19,7 @@ public interface CardRepository extends JpaRepository<CardEntity,Integer> {
 
     List<CardEntity> findAllByStatusAndClientPhone(CardStatus status, String profileName);
 
-
     List<CardEntity> findAllByStatusAndClientId(CardStatus status, String clientId);
-
 
     @Transactional
     @Modifying

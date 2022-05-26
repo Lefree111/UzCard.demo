@@ -1,10 +1,9 @@
 package com.company.dto;
 
+import com.company.TransactionStatus;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,7 +14,6 @@ public class TransactionDTO {
     private Long amount;
 
     private LocalDateTime createDate;
-    private Boolean status = true;
+    private TransactionStatus status;
 
-    private String profileId;
 }
