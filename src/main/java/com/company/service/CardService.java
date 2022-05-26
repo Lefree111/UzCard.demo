@@ -7,6 +7,8 @@ import com.company.dto.ClientDTO;
 import com.company.entity.CardEntity;
 import com.company.entity.ClientEntity;
 import com.company.exp.CardAlreadyExistsExsecption;
+import com.company.exp.ItemNotFoundException;
+import com.company.exp.NumberNotFoundExseption;
 import com.company.exp.PhoneNotFoundException;
 import com.company.repository.CardRepository;
 import com.company.repository.ClientRepository;
@@ -14,18 +16,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+
+import static com.company.CardStatus.*;
+
 
 @Service
 public class CardService {
-
 
     @Autowired
     private ClientRepository clientRepository;
 
     @Autowired
     private CardRepository cardRepository;
-
 
     public CardDTO create(CardDTO dto) {
         Optional<CardEntity> optional = cardRepository.findByNumber(dto.getNumber());
@@ -45,6 +50,15 @@ public class CardService {
         return dto;
     }
 
+    public Boolean updateStatusCard(String cardNumber){
+        CardEntity entity = cardRepository.findByNumber(cardNumber).orElseThrow();
+        if (entity.getStatus().equals(ACTIVE)){
+            throw new ItemNotFoundException("do'stim seni statusing active emas shuni to'g'rla 70 qator");
+        }
+        int n =  cardRepository.updateStatus(ACTIVE, cardNumber);
+        return n > 0;
+    }
+
     public CardDTO cardga_clientni_ulash(ClientCardDTO dto) {
         CardEntity entity = cardRepository.findByNumber(dto.getNumber()).orElseThrow(() -> {
             throw new CardAlreadyExistsExsecption("Card yaratilgan o'gayni istambo'lma boshqa ol mazgi  40 qator");
@@ -52,11 +66,41 @@ public class CardService {
         ClientEntity clientEntity = clientRepository.findByPhone(dto.getPhone()).orElseThrow(() -> {
             throw new PhoneNotFoundException("Tel raqam tolimadi");
         });
-        entity.setClientPhone(dto.getPhone());
-        entity.setClientId(clientEntity.getId());
-        entity.setStatus(CardStatus.ACTIVE);
+        if (entity.getStatus().equals(CardStatus.ACTIVE)) {
+            entity.setClientPhone(dto.getPhone());
+            entity.setClientId(clientEntity.getId());
+        }
         cardRepository.save(entity);
         return toDTO(entity);
+    }
+
+    public List<CardDTO> getCardListByPhone(String phone){
+        List<CardDTO> list = new ArrayList<>();
+        cardRepository.findAllByStatusAndClientPhone(ACTIVE,phone).forEach(entity -> {
+            list.add(toDTO(entity));
+        });
+        if (list.isEmpty()) {
+            throw new ItemNotFoundException("Not Found!");
+        }
+        return list;
+    }
+
+    public List<CardDTO> getCardListByClientId(String clientId){
+        List<CardDTO> list = new ArrayList<>();
+        cardRepository.findAllByStatusAndClientId(ACTIVE,clientId).forEach(entity -> {
+            list.add(toDTO(entity));
+        });
+        if (list.isEmpty()) {
+            throw new ItemNotFoundException("Not Found!");
+        }
+        return list;
+    }
+
+    public CardDTO getCardByNumber(String number){
+        Optional<CardEntity> entity = cardRepository.findByNumber(number);
+        if (entity.isEmpty()){throw new NumberNotFoundExseption("karta raqami topilmadi");}
+        CardEntity cardEntity = entity.get();
+        return toDTO(cardEntity);
     }
 
 
@@ -80,7 +124,6 @@ public class CardService {
         return cardNumber;
     }
 
-
     public CardDTO toDTO(CardEntity entity) {
         CardDTO dto = new CardDTO();
         dto.setId(entity.getId());
@@ -92,5 +135,4 @@ public class CardService {
         dto.setCreateDate(entity.getCreateDate());
         return dto;
     }
-
 }

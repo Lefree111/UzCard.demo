@@ -28,5 +28,26 @@ public class CardController {
         return ResponseEntity.ok(cardService.cardga_clientni_ulash(dto));
     }
 
+    @PutMapping("/updatestatusCard/{cardNumber}")
+    public ResponseEntity<?> updateStatusCard(@PathVariable("cardNumber") String cardNumber){
+        return ResponseEntity.ok(cardService.updateStatusCard(cardNumber));
+    }
+
+    @GetMapping("/getCardListByPhone/{phone}")
+    public ResponseEntity<?> getCardListByPhone(@PathVariable("phone") String phone) {
+        return ResponseEntity.ok(cardService.getCardListByPhone(phone));
+    }
+
+    @GetMapping("/getCardListByClientId/{clientId}")
+    public ResponseEntity<?> getCardListByClientId(@PathVariable("clientId") String clientId) {
+        return ResponseEntity.ok(cardService.getCardListByClientId(clientId));
+    }
+
+    @GetMapping("/getCardByNumber/{number}")
+    public ResponseEntity<?> getCardByNumber(@PathVariable("number") String number){
+        return ResponseEntity.ok(cardService.getCardByNumber(number));
+    }
+
+
 
 }
