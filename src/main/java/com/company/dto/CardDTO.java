@@ -1,5 +1,6 @@
 package com.company.dto;
 
+import com.company.CardStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +14,7 @@ public class CardDTO {
     private String name;//
     private String number;//
     private LocalDateTime expiredDate;
-    private String phone;
-    private Boolean status = true;//
+    private CardStatus status;//
     private LocalDateTime createDate;//
     private Long balance;//
 

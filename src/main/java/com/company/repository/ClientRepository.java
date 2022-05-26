@@ -26,7 +26,8 @@ public interface ClientRepository extends JpaRepository<ClientEntity,Integer> {
     @Transactional
     @Modifying
     @Query("update ClientEntity set status = :status where phone = :phone")
-    int updateVisible(@Param("status") ClientStatus status, @Param("phone") String phone);
+    int updateStatus(@Param("status") ClientStatus status,
+                      @Param("phone") String phone);
 
 
 }

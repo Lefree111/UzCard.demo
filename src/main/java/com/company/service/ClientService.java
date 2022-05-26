@@ -62,7 +62,7 @@ public class ClientService {
         if (entity.getStatus().equals(ACTIVE)){
             throw new ItemNotFoundException("do'stim seni statusing active emas shuni to'g'rla 63 qator");
         }
-        int n =  clientRepository.updateVisible(ACTIVE, phone);
+        int n =  clientRepository.updateStatus(ACTIVE, phone);
         return n > 0;
     }
 

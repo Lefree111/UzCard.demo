@@ -32,11 +32,11 @@ Content-Type: application/json
 <> 2022-05-25T191933.200.json
 
 ### bu narsa telefon raqamin yangilash uchun ishlatiladi
-PUT http://localhost:8084/client/updatePhone/+998908798549
+PUT http://localhost:8084/client/updatePhone/+998909119180
 Content-Type: application/json
 
 {
-  "phone": "+998909119180"
+  "phone": "+998901231212"
 }
 
 <> 2022-05-25T192433.200.json
@@ -54,7 +54,7 @@ Content-Type: application/json
 <> 2022-05-25T192528.200.json
 
 ### bu clientlarni profileName si bo'yicha hammasini olib beradi
-GET http://localhost:8084/client/AllClient_viz_profileName/Humans
+GET http://localhost:8084/client/AllClient_viz_profileName/Apelsin
 Content-Type: application/json
 
 <> 2022-05-25T193015.200.json
