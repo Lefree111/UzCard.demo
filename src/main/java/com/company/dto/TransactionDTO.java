@@ -1,6 +1,7 @@
 package com.company.dto;
 
 import com.company.TransactionStatus;
+import com.company.entity.CardEntity;
 import lombok.Getter;
 import lombok.Setter;
 import java.time.LocalDateTime;

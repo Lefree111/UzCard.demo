@@ -48,13 +48,14 @@ Content-Type: application/json
 <> 2022-05-25T192412.200.json
 
 ### bu tel raqamga kimga tegishli ekanligini ko'rib beradi
-GET http://localhost:8084/client/getById/+998909119180
+GET http://localhost:8084/client/getById/+998330041155/Humans
 Content-Type: application/json
 
-<> 2022-05-25T192528.200.json
+<> 2022-05-26T145023.200.json
+<> 2022-05-26T144906.400.json
 
 ### bu clientlarni profileName si bo'yicha hammasini olib beradi
-GET http://localhost:8084/client/AllClient_viz_profileName/Apelsin
+GET http://localhost:8084/client/AllClient_viz_profileName/Humans
 Content-Type: application/json
 
 <> 2022-05-25T193015.200.json

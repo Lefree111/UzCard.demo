@@ -90,12 +90,15 @@ public class ClientService {
         return list;
     }
 
-    public ClientDTO getById(String phone){
+    public ClientDTO getById(String phone,String profileName){
         ClientEntity entity = clientRepository.findByPhone(phone).orElseThrow(()->{
             throw new ItemNotFoundException("tel raqam topilmadi 97 qator");
         });
         if (!entity.getStatus().equals(ACTIVE)){
             throw new ItemNotFoundException("do'stim seni statusing active emas shuni to'g'rla");
+        }
+        if (!entity.getProfileName().equals(profileName)){
+            throw new ItemNotFoundException("dalbayop ekansan mazgi");
         }
         return toDTO(entity);
     }

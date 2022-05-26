@@ -46,6 +46,8 @@ public class CardService {
         entity.setStatus(CardStatus.NO_ACTIVE);
         cardRepository.save(entity);
         dto.setId(entity.getId());
+        dto.setName(entity.getName());
+        dto.setExpiredDate(entity.getExpiredDate());
         return dto;
     }
 

@@ -1,5 +1,6 @@
 package com.company.entity;
 
+import com.company.TransactionStatus;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -29,7 +30,8 @@ public class TransactionEntity {
     private Long amount;
 
     @Column(name = "status")
-    private Boolean status;
+    @Enumerated(EnumType.STRING)
+    private TransactionStatus status;
 
     @Column(name = "create_date")
     private LocalDateTime createDate;

@@ -48,9 +48,9 @@ public class ClientController {
     }
 
     //    @ApiOperation(value = "Get", notes = "Bu method telefon raamkinga tegishli ekanligini bilib beradi")
-    @GetMapping("/getById/{phone}")
-    public ResponseEntity<?> getById(@PathVariable("phone") String phone) {
-        return ResponseEntity.ok(clientService.getById(phone));
+    @GetMapping("/getById/{phone}/{profileName}")
+    public ResponseEntity<?> getById(@PathVariable("phone") String phone,@PathVariable("profileName") String profileName) {
+        return ResponseEntity.ok(clientService.getById(phone,profileName));
     }
 
     //    @ApiOperation(value = "Get", notes = "Bu method clientni profileName yani u qaysi ilovadan foydalanadi " +
