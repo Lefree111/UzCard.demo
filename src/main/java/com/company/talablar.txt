@@ -16,7 +16,7 @@
 2. Card
     id,number,expired_date,phone,status,created_date,balance, Client, profile_name
 3. Transactions
-    id,fromCard,ToCard,amount,createdDate,Status,
+    id,fromCard,ToCard,amount,createdDate,Status,profileName
 
 ****** Important ******
 1. Amount and Balance in Long (mazgi tiyinda)

@@ -38,7 +38,6 @@ public class CardService {
         }
 
         CardEntity entity = new CardEntity();
-        entity.setName(dto.getName());
         entity.setNumber(getCardNumber());
         entity.setBalance(0L);
         entity.setExpiredDate(LocalDateTime.now());
@@ -46,9 +45,8 @@ public class CardService {
         entity.setStatus(CardStatus.NO_ACTIVE);
         cardRepository.save(entity);
         dto.setId(entity.getId());
-        dto.setName(entity.getName());
         dto.setExpiredDate(entity.getExpiredDate());
-        return dto;
+        return toDTO(entity);
     }
 
     public Boolean updateStatusCard(String cardNumber){
@@ -60,7 +58,7 @@ public class CardService {
         return n > 0;
     }
 
-    public CardDTO cardga_clientni_ulash(ClientCardDTO dto) {
+    public ClientCardDTO cardga_clientni_ulash(ClientCardDTO dto) {
         CardEntity entity = cardRepository.findByNumber(dto.getNumber()).orElseThrow(() -> {
             throw new CardAlreadyExistsExsecption("Card yaratilgan o'gayni istambo'lma boshqa ol mazgi  40 qator");
         });
@@ -72,7 +70,8 @@ public class CardService {
             entity.setClientId(clientEntity.getId());
         }
         cardRepository.save(entity);
-        return toDTO(entity);
+        dto.setId(entity.getId());
+        return dto;
     }
 
     public List<CardDTO> getCardListByPhone(String phone){
@@ -120,6 +119,9 @@ public class CardService {
 
 
 
+
+
+
     private String getCardNumber() {
         int max = 9999, min = 1000;
         int a = (int) (Math.random() * (max - min + 1) + min);
@@ -137,7 +139,6 @@ public class CardService {
     public CardDTO toDTO(CardEntity entity) {
         CardDTO dto = new CardDTO();
         dto.setId(entity.getId());
-        dto.setName(entity.getName());
         dto.setNumber(entity.getNumber());
         dto.setBalance(entity.getBalance());
         dto.setExpiredDate(entity.getExpiredDate());

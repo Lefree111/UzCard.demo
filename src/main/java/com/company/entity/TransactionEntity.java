@@ -29,6 +29,9 @@ public class TransactionEntity {
     @Column(name = "amount")
     private Long amount;
 
+    @Column(name = "profileName")
+    private String profileName;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private TransactionStatus status;

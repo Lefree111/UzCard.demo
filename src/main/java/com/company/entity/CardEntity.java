@@ -20,8 +20,6 @@ public class CardEntity {
     @Column(name = "uuid", unique = true)
     private String id;
 
-    @Column(name = "name")
-    private String name;
     @Column(name = "number",nullable = false)
     private String number;
     @Column(name = "balance")

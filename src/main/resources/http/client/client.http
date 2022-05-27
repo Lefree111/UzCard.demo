@@ -3,10 +3,10 @@ POST http://localhost:8084/client/create
 Content-Type: application/json
 
 {
-  "name": "Shamshotbek",
-  "surname": "Komiljonov",
+  "name": "jhgfdsdfgh",
+  "surname": "jhgfdfg",
   "middleName": "Sodiqjon o'g'li",
-  "phone": "+9989351212202",
+  "phone": "+9989351212285",
   "profileName": "Apelsin"
 }
 
@@ -26,7 +26,7 @@ Content-Type: application/json
 <> 2022-05-25T191726.200.json
 
 ### bu clientni statusini active qilish uchun ishlatiladi birinchi yaratilganda NO_ACTIVE bo'ladi
-PUT http://localhost:8084/client/updateStatus/+9989351212202
+PUT http://localhost:8084/client/updateStatus/+9989351212285
 Content-Type: application/json
 
 <> 2022-05-25T191933.200.json

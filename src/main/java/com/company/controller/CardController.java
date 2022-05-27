@@ -2,7 +2,6 @@ package com.company.controller;
 
 import com.company.dto.CardDTO;
 import com.company.dto.ClientCardDTO;
-import com.company.dto.ClientDTO;
 import com.company.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class CardController {
     }
 
     @PutMapping("/updatestatusCard/{cardNumber}")
-    public ResponseEntity<?> updateStatusCard(@PathVariable("cardNumber") String cardNumber){
+    public ResponseEntity<?> updateStatusCard(@PathVariable("cardNumber") String cardNumber) {
         return ResponseEntity.ok(cardService.updateStatusCard(cardNumber));
     }
 
@@ -44,15 +43,14 @@ public class CardController {
     }
 
     @GetMapping("/getCardByNumber/{number}")
-    public ResponseEntity<?> getCardByNumber(@PathVariable("number") String number){
+    public ResponseEntity<?> getCardByNumber(@PathVariable("number") String number) {
         return ResponseEntity.ok(cardService.getCardByNumber(number));
     }
 
     @GetMapping("/getCardBalanceByNumber/{number}")
-    public ResponseEntity<?> getCardBalanceByNumber(@PathVariable("number") String number){
+    public ResponseEntity<?> getCardBalanceByNumber(@PathVariable("number") String number) {
         return ResponseEntity.ok(cardService.getCardBalanceByNumber(number));
     }
-
 
 
 }

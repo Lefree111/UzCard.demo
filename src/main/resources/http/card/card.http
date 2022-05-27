@@ -18,8 +18,8 @@ POST http://localhost:8084/card/card_vs_client_ulanish
 Content-Type: application/json
 
 {
-  "phone": "+998330041155",
-  "number": "8600-5340-4927-6610"
+  "phone": " +998901231212",
+  "number": "8600-7435-9059-1798"
 }
 
 <> 2022-05-26T111336.200.json
@@ -28,7 +28,7 @@ Content-Type: application/json
 <> 2022-05-26T102514.400.json
 
 ###
-PUT http://localhost:8084/card/updatestatusCard/8600-5340-4927-6610
+PUT http://localhost:8084/card/updatestatusCard/8600-7435-9059-1798
 Content-Type: application/json
 
 <> 2022-05-26T111149.200.json
