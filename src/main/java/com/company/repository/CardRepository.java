@@ -15,6 +15,9 @@ public interface CardRepository extends JpaRepository<CardEntity,Integer> {
 
     Optional<CardEntity> findByNumber(String number);
 
+    Optional<CardEntity> findById(String id);
+
+
     List<CardEntity> findAllByStatusAndClientPhone(CardStatus status, String profileName);
 
     List<CardEntity> findAllByStatusAndClientId(CardStatus status, String clientId);

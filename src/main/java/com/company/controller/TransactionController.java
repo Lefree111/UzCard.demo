@@ -33,6 +33,14 @@ public class TransactionController {
     }
 
 
+    @GetMapping("/paginationClientId/{clientId}")
+    public ResponseEntity<?> getProfileListClientId(@RequestParam(value = "page", defaultValue = "0") int page,
+                                            @RequestParam(value = "size", defaultValue = "5") int size,
+                                            @PathVariable("clientId")String clientId) {
+        return ResponseEntity.ok(transactionService.paginationListClientId(page, size,clientId));
+    }
+
+
 
 
 

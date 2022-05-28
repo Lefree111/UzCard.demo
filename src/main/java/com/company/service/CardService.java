@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.company.CardStatus.*;
+import static com.company.CardStatus.ACTIVE;
 
 
 @Service
@@ -31,6 +31,9 @@ public class CardService {
     @Autowired
     private CardRepository cardRepository;
 
+    /* @Autowired
+     private CardCustomRepository cardCustomRepository;
+ */
     public CardDTO create(CardDTO dto) {
         Optional<CardEntity> optional = cardRepository.findByNumber(dto.getNumber());
         if (optional.isPresent()) {
@@ -49,12 +52,12 @@ public class CardService {
         return toDTO(entity);
     }
 
-    public Boolean updateStatusCard(String cardNumber){
+    public Boolean updateStatusCard(String cardNumber) {
         CardEntity entity = cardRepository.findByNumber(cardNumber).orElseThrow();
-        if (entity.getStatus().equals(ACTIVE)){
+        if (entity.getStatus().equals(ACTIVE)) {
             throw new ItemNotFoundException("do'stim seni statusing active emas shuni to'g'rla 70 qator");
         }
-        int n =  cardRepository.updateStatus(ACTIVE, cardNumber);
+        int n = cardRepository.updateStatus(ACTIVE, cardNumber);
         return n > 0;
     }
 
@@ -74,9 +77,9 @@ public class CardService {
         return dto;
     }
 
-    public List<CardDTO> getCardListByPhone(String phone){
+    public List<CardDTO> getCardListByPhone(String phone) {
         List<CardDTO> list = new ArrayList<>();
-        cardRepository.findAllByStatusAndClientPhone(ACTIVE,phone).forEach(entity -> {
+        cardRepository.findAllByStatusAndClientPhone(ACTIVE, phone).forEach(entity -> {
             list.add(toDTO(entity));
         });
         if (list.isEmpty()) {
@@ -85,9 +88,9 @@ public class CardService {
         return list;
     }
 
-    public List<CardDTO> getCardListByClientId(String clientId){
+    public List<CardDTO> getCardListByClientId(String clientId) {
         List<CardDTO> list = new ArrayList<>();
-        cardRepository.findAllByStatusAndClientId(ACTIVE,clientId).forEach(entity -> {
+        cardRepository.findAllByStatusAndClientId(ACTIVE, clientId).forEach(entity -> {
             list.add(toDTO(entity));
         });
         if (list.isEmpty()) {
@@ -96,16 +99,18 @@ public class CardService {
         return list;
     }
 
-    public CardDTO getCardByNumber(String number){
+    public CardDTO getCardByNumber(String number) {
         Optional<CardEntity> entity = cardRepository.findByNumber(number);
-        if (entity.isEmpty()){throw new NumberNotFoundExseption("karta raqami topilmadi");}
+        if (entity.isEmpty()) {
+            throw new NumberNotFoundExseption("karta raqami topilmadi");
+        }
         CardEntity cardEntity = entity.get();
         return toDTO(cardEntity);
     }
 
-    public Long getCardBalanceByNumber(String number){
+    public Long getCardBalanceByNumber(String number) {
         Optional<CardEntity> optional = cardRepository.findByNumber(number);
-        if (optional.isEmpty()){
+        if (optional.isEmpty()) {
             throw new NumberNotFoundExseption("karta topilmadi");
         }
         CardEntity entity = optional.get();
@@ -113,13 +118,11 @@ public class CardService {
     }
 
 
-
-
-
-
-
-
-
+ /*   //TODO filter
+    public List<CardDTO> filter(CardFilterDTO dto){
+        return cardCustomRepository.filter(dto);
+    }
+*/
 
 
     private String getCardNumber() {

@@ -114,6 +114,12 @@ public class ClientService {
         return list;
     }
 
+    public ClientDTO get(String clinetId){
+        Optional<ClientEntity> optional = clientRepository.findById(Integer.valueOf(clinetId));
+        ClientEntity entity = optional.get();
+        return toDTO(entity);
+    }
+
 
 
 

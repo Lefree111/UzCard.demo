@@ -1,6 +1,7 @@
 package com.company.service;
 
 import com.company.TransactionStatus;
+import com.company.dto.CardDTO;
 import com.company.dto.ClientDTO;
 import com.company.dto.TransactionDTO;
 import com.company.entity.CardEntity;
@@ -20,6 +21,8 @@ import java.util.List;
 
 @Service
 public class TransactionService {
+    @Autowired
+    private CardService cardService;
     @Autowired
     private CardRepository cardRepository;
 
@@ -87,6 +90,20 @@ public class TransactionService {
     }
 
 
+    public List<TransactionDTO> paginationListClientId(int page, int size, String clientId) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createDate"));
+
+        List<TransactionDTO> list = new ArrayList<>();
+
+        transactionRepository.findAllByClientId(clientId, pageable).forEach(courseEntity -> {
+            list.add(toDTO(courseEntity));
+        });
+
+        if (list.isEmpty()) {
+            throw new ItemNotFoundException("List bo'm bo'sh ku Mazgi");
+        }
+        return list;
+    }
 
     public TransactionDTO toDTO (TransactionEntity entity){
         TransactionDTO dto = new TransactionDTO();

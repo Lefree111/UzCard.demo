@@ -1,7 +1,9 @@
 package com.company.controller;
 
 import com.company.dto.CardDTO;
+import com.company.dto.CardFilterDTO;
 import com.company.dto.ClientCardDTO;
+import com.company.repository.custom.CardCustomRepository;
 import com.company.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +53,13 @@ public class CardController {
     public ResponseEntity<?> getCardBalanceByNumber(@PathVariable("number") String number) {
         return ResponseEntity.ok(cardService.getCardBalanceByNumber(number));
     }
+
+
+
+    /*@PostMapping("/filter")
+    public ResponseEntity<?> filter(@RequestBody CardFilterDTO dto) {
+        return ResponseEntity.ok(cardService.filter(dto));
+    }*/
 
 
 }
