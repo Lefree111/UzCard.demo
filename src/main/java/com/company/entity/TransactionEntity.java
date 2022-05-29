@@ -23,6 +23,7 @@ public class TransactionEntity {
     @Column(name = "fromCard",nullable = false)
     private String fromCard;
 
+    @Column(name = "")
     @ManyToOne(fetch = FetchType.LAZY)
     private CardEntity card;
 

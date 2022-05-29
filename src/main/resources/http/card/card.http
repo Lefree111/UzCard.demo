@@ -4,8 +4,9 @@ POST http://localhost:8084/card/create
 Content-Type: application/json
 
 {
-  "name": "UzCard"
+  "name":"Xalq bank card"
 }
+
 
 <> 2022-05-26T111038.200.json
 <> 2022-05-26T100738.200.json
@@ -18,8 +19,8 @@ POST http://localhost:8084/card/card_vs_client_ulanish
 Content-Type: application/json
 
 {
-  "phone": " +998901231212",
-  "number": "8600-7435-9059-1798"
+  "phone": "+998335111111",
+  "number":"8600-5526-9416-6105"
 }
 
 <> 2022-05-26T111336.200.json
@@ -28,14 +29,14 @@ Content-Type: application/json
 <> 2022-05-26T102514.400.json
 
 ###
-PUT http://localhost:8084/card/updatestatusCard/8600-7435-9059-1798
+PUT http://localhost:8084/card/updatestatusCard/8600-5526-9416-6105
 Content-Type: application/json
 
 <> 2022-05-26T111149.200.json
 <> 2022-05-26T105430.200.json
 
 ###
-GET http://localhost:8084/card/getCardListByPhone/+998330041155
+GET http://localhost:8084/card/getCardListByPhone/+998335111111
 Content-Type: application/json
 
 <> 2022-05-26T111344.200.json
@@ -49,14 +50,14 @@ Content-Type: application/json
 <> 2022-05-26T112314.404.json
 
 ###
-GET http://localhost:8084/card/getCardByNumber/8600-5340-4927-6610
+GET http://localhost:8084/card/getCardByNumber/8600-5526-9416-6105
 Content-Type: application/json
 
 <> 2022-05-26T113413.200.json
 <> 2022-05-26T113302.500.json
 
 ###
-GET http://localhost:8084/card/getCardBalanceByNumber/8600-5340-4927-6610
+GET http://localhost:8084/card/getCardBalanceByNumber/8600-5526-9416-6105
 Content-Type: application/json
 
 <> 2022-05-26T114601.200.json
