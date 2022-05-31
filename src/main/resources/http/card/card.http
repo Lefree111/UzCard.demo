@@ -19,8 +19,8 @@ POST http://localhost:8084/card/card_vs_client_ulanish
 Content-Type: application/json
 
 {
-  "phone": "+998335111111",
-  "number":"8600-5526-9416-6105"
+  "phone": "+998335222222",
+  "number":"8600-1601-1768-2376"
 }
 
 <> 2022-05-26T111336.200.json
@@ -29,35 +29,35 @@ Content-Type: application/json
 <> 2022-05-26T102514.400.json
 
 ###
-PUT http://localhost:8084/card/updatestatusCard/8600-5526-9416-6105
+PUT http://localhost:8084/card/updatestatusCard/8600-1601-1768-2376
 Content-Type: application/json
 
 <> 2022-05-26T111149.200.json
 <> 2022-05-26T105430.200.json
 
 ###
-GET http://localhost:8084/card/getCardListByPhone/+998335111111
+GET http://localhost:8084/card/getCardListByPhone/+998335222222
 Content-Type: application/json
 
 <> 2022-05-26T111344.200.json
 <> 2022-05-26T111021.200.json
 
 ###
-GET http://localhost:8084/card/getCardListByClientId/4028097b80fb5d250180fb5d5c2a0000
+GET http://localhost:8084/card/getCardListByClientId/8a8a827181131aa10181131bcb410000
 Content-Type: application/json
 
 <> 2022-05-26T112506.200.json
 <> 2022-05-26T112314.404.json
 
 ###
-GET http://localhost:8084/card/getCardByNumber/8600-5526-9416-6105
+GET http://localhost:8084/card/getCardByNumber/8600-1601-1768-2376
 Content-Type: application/json
 
 <> 2022-05-26T113413.200.json
 <> 2022-05-26T113302.500.json
 
 ###
-GET http://localhost:8084/card/getCardBalanceByNumber/8600-5526-9416-6105
+GET http://localhost:8084/card/getCardBalanceByNumber/8600-1601-1768-2376
 Content-Type: application/json
 
 <> 2022-05-26T114601.200.json

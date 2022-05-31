@@ -103,6 +103,13 @@ public class ClientService {
         return toDTO(entity);
     }
 
+    public ClientDTO getById(String id){
+        ClientEntity entity = clientRepository.findById(id).orElseThrow(()->{
+            throw new ItemNotFoundException("Id not found");
+        });
+        return toDTO(entity);
+    }
+
     public List<ClientDTO> AllClient_viz_profileName(String profileName) {
         List<ClientDTO> list = new ArrayList<>();
         clientRepository.findAllByStatusAndProfileName(ACTIVE,profileName).forEach(entity -> {

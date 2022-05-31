@@ -20,14 +20,11 @@ public class TransactionEntity {
     @Column(name = "uuid", unique = true)
     private String uuid;
 
+
     @Column(name = "fromCard",nullable = false)
     private String fromCard;
 
-    @Column(name = "")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private CardEntity card;
-
-    @Column(name = "toCard")
+    @Column(name = "toCard",nullable = false)
     private String toCard;
 
     @Column(name = "amount")

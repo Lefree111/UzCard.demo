@@ -19,12 +19,14 @@ public class ClientController {
     //    @ApiOperation(value = "Post", notes = "Bu method client yaratish uchun ishlatiladi")
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody ClientDTO dto) {
+        log.info("Authorization {} "+dto);
         return ResponseEntity.ok(clientService.create(dto));
     }
 
     //    @ApiOperation(value = "Put", notes = "Bu method yaratilgan clientni malumotlarini o'zgartirish uchun ishlatiladi")
     @PutMapping("/update/{phone}")
     public ResponseEntity<?> update(@PathVariable("phone") String phone, @RequestBody ClientDTO dto) {
+        log.info("Authorization {} "+dto);
         return ResponseEntity.ok(clientService.update(phone, dto));
     }
 
@@ -37,6 +39,7 @@ public class ClientController {
     //    @ApiOperation(value = "Put", notes = "Bu method clientni phonesini yangilash uchun ishlatiladi")
     @PutMapping("/updatePhone/{phone}")
     public ResponseEntity<?> updatePhone(@PathVariable("phone") String phone, @RequestBody ClientDTO updatePhone) {
+        log.info("Authorization {} "+updatePhone);
         return ResponseEntity.ok(clientService.updatePhone(phone, updatePhone));
     }
 

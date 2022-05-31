@@ -3,10 +3,10 @@ POST http://localhost:8084/client/create
 Content-Type: application/json
 
 {
-  "name": "Abror",
-  "surname": "Shavkatov",
-  "middleName": "Shavkatbek o'g'li",
-  "phone": "+99899 197 01 02",
+  "name": "wertyu",
+  "surname": "ertyu",
+  "middleName": "ertyui o'g'li",
+  "phone": "+998991970000",
   "profileName": "Bank"
 }
 
@@ -26,17 +26,17 @@ Content-Type: application/json
 <> 2022-05-25T191726.200.json
 
 ### bu clientni statusini active qilish uchun ishlatiladi birinchi yaratilganda NO_ACTIVE bo'ladi
-PUT http://localhost:8084/client/updateStatus/+99899 197 01 02
+PUT http://localhost:8084/client/updateStatus/+998991970000
 Content-Type: application/json
 
 <> 2022-05-25T191933.200.json
 
 ### bu narsa telefon raqamin yangilash uchun ishlatiladi
-PUT http://localhost:8084/client/updatePhone/+998953011213
+PUT http://localhost:8084/client/updatePhone/+998991970000
 Content-Type: application/json
 
 {
-  "phone": "+998335111111"
+  "phone": "+998335222222"
 }
 
 <> 2022-05-25T192433.200.json
@@ -48,14 +48,14 @@ Content-Type: application/json
 <> 2022-05-25T192412.200.json
 
 ### bu tel raqamga kimga tegishli ekanligini ko'rib beradi
-GET http://localhost:8084/client/getById/+99899 197 01 02/Bank
+GET http://localhost:8084/client/getById/+998335222222/Bank
 Content-Type: application/json
 
 <> 2022-05-26T145023.200.json
 <> 2022-05-26T144906.400.json
 
 ### bu clientlarni profileName si bo'yicha hammasini olib beradi
-GET http://localhost:8084/client/AllClient_viz_profileName/Apelsin
+GET http://localhost:8084/client/AllClient_viz_profileName/Bank
 Content-Type: application/json
 
 <> 2022-05-25T193015.200.json

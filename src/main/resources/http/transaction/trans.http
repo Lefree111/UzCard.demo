@@ -1,0 +1,21 @@
+### create
+POST http://167.172.66.39:9091/v1/client
+Authorization: Basic bank bankjon
+Content-Type: application/json
+
+{
+  "name": "Muhammadali",
+  "surname": "Abduvohidov",
+  "middleName": "Mirzohidjox o'g'li",
+  "phone": "+998330041155"
+}
+
+
+### GET ALL
+GET http://167.172.66.39:9091/v1/client/pagination
+Authorization: Basic admin adminjon
+
+
+
+http://167.172.66.39:9091/swagger-ui/index.html#/
+

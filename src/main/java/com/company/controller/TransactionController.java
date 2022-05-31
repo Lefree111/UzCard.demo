@@ -2,10 +2,11 @@ package com.company.controller;
 
 import com.company.dto.TransactionDTO;
 import com.company.service.TransactionService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@Slf4j
 @RestController
 @RequestMapping("transaction")
 public class TransactionController {
@@ -15,6 +16,7 @@ public class TransactionController {
 
     @PostMapping("/transactionCreate")
     public ResponseEntity<?> create(@RequestBody TransactionDTO dto){
+        log.info("Authorization {} "+dto);
         return ResponseEntity.ok(transactionService.create(dto));
     }
 
@@ -37,7 +39,7 @@ public class TransactionController {
     public ResponseEntity<?> getProfileListClientId(@RequestParam(value = "page", defaultValue = "0") int page,
                                             @RequestParam(value = "size", defaultValue = "5") int size,
                                             @PathVariable("clientId")String clientId) {
-        return ResponseEntity.ok(transactionService.paginationListClientId(page, size,clientId));
+        return ResponseEntity.ok(transactionService.paginationListClientId(clientId, page, size));
     }
 
 

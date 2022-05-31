@@ -2,6 +2,7 @@ package com.company.service;
 
 import com.company.CardStatus;
 import com.company.dto.CardDTO;
+import com.company.dto.CardFilterDTO;
 import com.company.dto.ClientCardDTO;
 import com.company.entity.CardEntity;
 import com.company.entity.ClientEntity;
@@ -11,11 +12,13 @@ import com.company.exp.NumberNotFoundExseption;
 import com.company.exp.PhoneNotFoundException;
 import com.company.repository.CardRepository;
 import com.company.repository.ClientRepository;
+import com.company.repository.custom.CardCustomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,11 @@ import static com.company.CardStatus.ACTIVE;
 
 @Service
 public class CardService {
+    @Autowired
+    private ClientService clientService;
+
+    @Autowired
+    private CardCustomRepository cardCustomRepository;
 
     @Autowired
     private ClientRepository clientRepository;
@@ -117,12 +125,24 @@ public class CardService {
         return entity.getBalance();
     }
 
+    public List<CardDTO> getByClientId(String id) {
+        clientService.getById(id);
+        return cardRepository.findByClientId(id).stream().map(this::toDTO).toList();
+    }
 
- /*   //TODO filter
+    //TODO filter
     public List<CardDTO> filter(CardFilterDTO dto){
         return cardCustomRepository.filter(dto);
     }
-*/
+
+    public  CardDTO  toDTO(CardEntity entity) {
+        CardDTO dto = new CardDTO();
+        dto.setBalance(entity.getBalance());
+        dto.setClientId(entity.getClientId());
+        dto.setNumber(entity.getNumber());
+        dto.setExpiredDate(entity.getExpiredDate());
+        return dto;
+    }
 
 
     private String getCardNumber() {
@@ -139,7 +159,7 @@ public class CardService {
         return cardNumber;
     }
 
-    public CardDTO toDTO(CardEntity entity) {
+ /*   public CardDTO toDTO(CardEntity entity) {
         CardDTO dto = new CardDTO();
         dto.setId(entity.getId());
         dto.setNumber(entity.getNumber());
@@ -148,5 +168,5 @@ public class CardService {
         dto.setClientPhone(entity.getClientPhone());
         dto.setCreateDate(entity.getCreateDate());
         return dto;
-    }
+    }*/
 }
